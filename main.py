@@ -4,9 +4,11 @@ from IPy import IP
 
 def scan(target):
     converted_ip = check_ip(target)
-    print(termcolor.colored(('\n' + '[- 0 Scanning Target] ' + str(target)), 'green'))
-    for port in range(1,1000):
+    print(termcolor.colored(('\n' + '[ (0*0) Scanning Target] ' + str(target) + '\n   \~/'), 'green'))
+    for port in range(0,65535):
         scan_port(converted_ip, port)
+    print('<THE_END>\nThanks for using the tool.')
+    print(termcolor.colored((' - harimypala'), 'green'))
 
 def check_ip(ip):
     try:
@@ -27,7 +29,7 @@ def scan_port(ipaddress, port):
             banner = get_banner(sock)
             print(termcolor.colored(('[+] Open Port ' + str(port) + ' : ' + str(banner.decode().strip('\n'))), 'red'))
         except:
-            print(termcolor.colored(('[+] Open Port ' + str(port)), 'red'))
+            print(termcolor.colored(('[+] Open Port ' + str(port) + ' : '), 'red'))
     except:
         pass
 
