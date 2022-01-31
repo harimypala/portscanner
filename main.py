@@ -1,10 +1,11 @@
 import socket
+import termcolor
 from IPy import IP
 
 def scan(target):
     converted_ip = check_ip(target)
-    print('\n' + '[- 0 Scanning Target] ' + str(target))
-    for port in range(1,100):
+    print(termcolor.colored(('\n' + '[- 0 Scanning Target] ' + str(target)), 'green'))
+    for port in range(1,1000):
         scan_port(converted_ip, port)
 
 def check_ip(ip):
@@ -20,18 +21,18 @@ def get_banner(s):
 def scan_port(ipaddress, port):
     try:
         sock = socket.socket()
-        sock.settimeout(0.5)
+        sock.settimeout(1)
         sock.connect((ipaddress, port))
         try:
             banner = get_banner(sock)
-            print('[+] Open Port ' + str(port) + ' : ' + str(banner.decode().strip('\n')))
+            print(termcolor.colored(('[+] Open Port ' + str(port) + ' : ' + str(banner.decode().strip('\n'))), 'red'))
         except:
-            print('[+] Open Port ' + str(port))
+            print(termcolor.colored(('[+] Open Port ' + str(port)), 'red'))
     except:
         pass
 
 
-targets = input('[+] Enter Target/s To Scan(split mulitple targets with ","): ')
+targets = input(termcolor.colored(('[+] Enter Target/s To Scan(split mulitple targets with ","): '), 'green'))
 if ',' in targets:
     for ip_add in targets.split(','):
         scan(ip_add.strip(' '))
