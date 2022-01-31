@@ -1,6 +1,12 @@
 import socket
 from IPy import IP
 
+def check_ip(ip):
+    try:
+        IP(ip)
+        return(ip)
+    except ValueError:
+        return socket.gethostbyname(ip)
 
 def scan_port(ipaddress, port):
     try:
@@ -13,6 +19,7 @@ def scan_port(ipaddress, port):
 
 
 ipaddress = input('[+] Enter Target To Scan: ')
+converted_ip = check_ip(ipaddress)
 
 for port in range(0, 85):
-    scan_port(ipaddress, port)
+    scan_port(converted_ip, port)
