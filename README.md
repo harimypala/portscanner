@@ -25,3 +25,7 @@ By using this tool we can find the **OPEN** ports of an IP/Domain, so that we ca
 - Hit Enter and this may take some time for better accuracy.
 
 **_Note_**: _**Make sure to install all the supporting libraries (socket, termcolor, IPy, etc....) for successful execution of the code.**_ 
+
+<br>
+**_THANK YOU_**<br>
+**_- Hari Mypala_**
